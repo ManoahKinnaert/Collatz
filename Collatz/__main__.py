@@ -1,5 +1,7 @@
 import sys 
+import os 
 
+# set max recursion depth
 sys.setrecursionlimit(10000)
 
 def f(n: int):
@@ -27,7 +29,11 @@ def run_collatz_recursive_exp(max_n: int):
         step = run_collatz_recursive(n)
         steps.append(step)
 
-    print("Steps in function of n:", steps)
+    print("[DEBUG]: Steps in function of n:", steps)
+    print("[DEBUG]: Max N =", len(steps))
+    return steps 
 
 if __name__ == "__main__":
-    run_collatz_recursive_exp(max_n=15)
+    max_n = os.getenv("N")
+    if max_n is None: max_n = 100
+    run_collatz_recursive_exp(max_n)
