@@ -1,5 +1,6 @@
 import sys 
 import os 
+from datetime import datetime
 
 from plot import plot 
 
@@ -24,7 +25,7 @@ def run_collatz_recursive(n: int):
         if num == 1: break 
     return i - 1
 
-def run_collatz_recursive_exp(max_n: int):
+def determine_collatz_recursive(max_n: int):
     N = range(1, max_n + 1)
     steps = []
     for n in N:
@@ -35,8 +36,19 @@ def run_collatz_recursive_exp(max_n: int):
     print("[DEBUG]: Max N =", len(steps))
     return steps 
 
+def run_collatz_exp_recursive(max_n: int):
+    times = []
+    for n in range(1, max_n + 1):
+        t1 = datetime.now()
+        determine_collatz_recursive(n)
+        t2 = datetime.now()
+        delta_t = t2 - t1 
+        times.append(delta_t.total_seconds() * 1000)
+    return times 
+
 if __name__ == "__main__":
     max_n = os.getenv("N")
     if max_n is None: max_n = 100
-    recursive = run_collatz_recursive_exp(max_n)
-    plot(recursive)
+    times = run_collatz_exp_recursive(max_n)
+    print("Time required per n in milliseconds:", times)
+    plot(times)
