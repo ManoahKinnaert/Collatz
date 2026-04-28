@@ -1,8 +1,8 @@
+from datetime import datetime
+from plot import plot 
+
 import sys 
 import os 
-from datetime import datetime
-
-from plot import plot 
 
 # set max recursion depth
 sys.setrecursionlimit(10000)
@@ -15,7 +15,6 @@ def collatz_recursive(i: int, n: int):
     if i == 0: return n
     elif i > 0: return f(collatz_recursive(i - 1, n))
     else: print("Invalid")
-
 
 def run_collatz_recursive(n: int):
     i = 0
