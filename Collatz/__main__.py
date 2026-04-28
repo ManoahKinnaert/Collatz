@@ -1,6 +1,8 @@
 import sys 
 import os 
 
+from plot import plot 
+
 # set max recursion depth
 sys.setrecursionlimit(10000)
 
@@ -36,4 +38,5 @@ def run_collatz_recursive_exp(max_n: int):
 if __name__ == "__main__":
     max_n = os.getenv("N")
     if max_n is None: max_n = 100
-    run_collatz_recursive_exp(max_n)
+    recursive = run_collatz_recursive_exp(max_n)
+    plot(recursive)
