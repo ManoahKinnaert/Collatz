@@ -47,6 +47,16 @@ def iterative_experiment(min_val: int=10000, max_val: int=100000):
         times.append(t)
     return times  
 
+def test_recursion():
+    assert measure_collatz_recursive(12) == 9
+    assert measure_collatz_recursive(19) == 20
+    assert measure_collatz_recursive(27) == 111
+
+def test_iterative():
+    assert measure_collatz_iterative(12) == 9
+    assert measure_collatz_iterative(19) == 20
+    assert measure_collatz_iterative(27) == 111
+
 def main():
     min_val = 100_000
     max_val = 110_000 
