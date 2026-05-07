@@ -5,3 +5,12 @@ def f(n :int):
 def collatz_recursive(i: int, n: int):
     if i == 0: return n 
     elif i > 0: return f(collatz_recursive(i - 1, n))
+
+def count_recursive_steps():
+    pass  
+
+def main():
+    pass 
+
+if __name__ == "__main__":
+    pass 
