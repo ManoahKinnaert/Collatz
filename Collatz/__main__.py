@@ -1,69 +1,12 @@
-import time 
-import sys 
+from dynamic_solutions import measure_perf_top_down
+from recursive_solutions import measure_perf_recursive
 from plot import plot_results
-from tqdm import trange
-
-sys.setrecursionlimit(10000)
-
-def f(n :int):
-    if not n % 2: return n // 2
-    else: return 3 * n + 1
-
-def collatz_recursive(n: int):
-    if n == 1: return 0
-    return 1 + collatz_recursive(f(n)) 
-
-# a top down method
-def collatz_iterative(n: int):
-    i = 0
-    while n != 1:
-        n = f(n)
-        i += 1
-    return i 
-
-def measure_collatz_recursive(n: int):
-    start = time.perf_counter()
-    collatz_recursive(n)
-    end = time.perf_counter()
-    return end - start 
-
-def measure_collatz_iterative(n: int):
-    start = time.perf_counter()
-    collatz_iterative(n)
-    end = time.perf_counter()
-    return end - start 
-
-def recursive_experiment(min_val: int=10000, max_val: int=100000):
-    times = []
-    for n in trange(min_val, max_val + 1):
-        t = measure_collatz_recursive(n)
-        times.append(t)
-    return times 
-
-def iterative_experiment(min_val: int=10000, max_val: int=100000):
-    times = []
-    for n in trange(min_val, max_val + 1):
-        t = measure_collatz_iterative(n)
-        times.append(t)
-    return times  
-
-def test_recursion():
-    assert measure_collatz_recursive(12) == 9
-    assert measure_collatz_recursive(19) == 20
-    assert measure_collatz_recursive(27) == 111
-
-def test_iterative():
-    assert measure_collatz_iterative(12) == 9
-    assert measure_collatz_iterative(19) == 20
-    assert measure_collatz_iterative(27) == 111
 
 def main():
-    min_val = 100_000
-    max_val = 110_000 
-    recursive = recursive_experiment(min_val, max_val) 
-    iterative = iterative_experiment(min_val, max_val)
-    x = range(min_val, max_val + 1)
-    plot_results(x, iterative, recursive)
+    max_n = 1000000
+    top_down = measure_perf_top_down(max_n)
+    recursive = measure_perf_recursive(max_n)
+    plot_results(range(1, max_n + 1), top_down, recursive)
 
 if __name__ == "__main__":
     main() 
