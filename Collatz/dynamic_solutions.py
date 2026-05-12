@@ -1,3 +1,4 @@
+from tqdm import trange
 import time 
 
 def f(n: int):
@@ -22,7 +23,7 @@ def iterative(n: int):
 
 def measure_perf_top_down(max_n: int):
     times = []
-    for n in range(1, max_n + 1):
+    for n in trange(1, max_n + 1):
         start = time.perf_counter()
         top_down(n)
         end = time.perf_counter()

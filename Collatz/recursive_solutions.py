@@ -1,3 +1,4 @@
+from tqdm import trange
 import time 
 
 def collatz(n: int):
@@ -7,13 +8,13 @@ def collatz(n: int):
 
 def count_steps(max_n: int):
     steps = []
-    for n in range(1, max_n + 1):
+    for n in trange(1, max_n + 1):
         steps.append(collatz(n))
     return steps
 
 def measure_perf_recursive(max_n: int):
     times = []
-    for n in range(1, max_n + 1):
+    for n in trange(1, max_n + 1):
         start = time.perf_counter()
         collatz(n)
         end = time.perf_counter()
