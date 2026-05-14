@@ -28,6 +28,15 @@ def measure_perf_top_down(max_n: int):
         top_down(n)
         end = time.perf_counter()
         times.append(end - start)
+    return times 
+
+def measure_perf_iterative(max_n: int):
+    times = []
+    for n in trange(1, max_n + 1):
+        start = time.perf_counter()
+        iterative(n)
+        end = time.perf_counter()
+        times.append(end - start)
     return times  
 
 if __name__ == "__main__":
