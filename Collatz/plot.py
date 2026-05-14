@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt 
 
-def plot_results_top_vs_recusive(x: list, top_down: list, recursive: list):
+def plot_results_top_vs_recursive(x: list, top_down: list, recursive: list):
     plt.style.use("ggplot")
 
     fig, ax = plt.subplots(1, 1)
@@ -26,7 +26,7 @@ def plot_results_top_vs_iter(x: list, top_down: list, iter: list):
 
     plt.show()
 
-def plot_results_iter_vs_recusive(x: list, iter: list, recursive: list):
+def plot_results_iter_vs_recursive(x: list, iter: list, recursive: list):
     plt.style.use("ggplot")
 
     fig, ax = plt.subplots(1, 1)
